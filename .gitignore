@@ -20,3 +20,11 @@
 
 # Mac
 *.DS_Store
+
+# Vue
+*dist/
+
+# Others
+*.log
+.env.local
+.env.*.local
