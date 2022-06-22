@@ -1,0 +1,22 @@
+# Rust
+**/*.rs.bk
+
+# Solana
+*test-ledger/
+
+# Anchor
+*.anchor/
+*target/
+
+# Node
+*node_modules/
+
+# Python
+*venv/
+
+# IDE
+*.vscode/
+*.idea/
+
+# Mac
+*.DS_Store
