@@ -26,5 +26,11 @@
 
 # Others
 *.log
+*logs
+*.env
 .env.local
 .env.*.local
+*build/
+
+# Firebase
+*.firebase/

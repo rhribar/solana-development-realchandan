@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "bhowzzy"
+  },
+  "targets": {
+    "bhowzzy": {
+      "hosting": {
+        "blog": ["solana-blog-program-demo"]
+      }
+    }
+  }
+}

@@ -112,7 +112,14 @@ describe("blog", () => {
   });
 
   // it("delete post", async () => {
-  //   const tx = await program.methods.initialize().rpc();
+  //   const tx = await program.methods
+  //     .deletePost()
+  //     .accounts({
+  //       accountData: pda1,
+  //       payyer: kp.publicKey
+  //     })
+  //     .signers([kp])
+  //     .rpc();
   //   console.log("Your transaction signature", tx);
   // });
 });
