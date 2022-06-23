@@ -7,7 +7,7 @@ blog = "B1oggzHNyvXVTxqfw64pXogzbAvGFM7DqEbDakyGu25D"
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "/home/chandan/.config/solana/id.json"
 
 [scripts]

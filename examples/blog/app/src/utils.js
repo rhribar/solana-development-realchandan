@@ -1,6 +1,8 @@
 import { Connection, PublicKey } from "@solana/web3.js";
 import { deserialize } from "borsh";
 
+const api_endpoint = "https://api.devnet.solana.com";
+
 class Assignable {
   constructor(properties) {
     Object.keys(properties).map((key) => {
@@ -11,7 +13,7 @@ class Assignable {
 class Task extends Assignable {}
 
 export async function getBlogPosts() {
-  const connection = new Connection("http://localhost:8899");
+  const connection = new Connection(api_endpoint);
 
   const program_accounts = await connection.getProgramAccounts(
     new PublicKey("B1oggzHNyvXVTxqfw64pXogzbAvGFM7DqEbDakyGu25D")
@@ -35,6 +37,7 @@ export async function getBlogPosts() {
   const results = [];
 
   program_accounts.forEach((item) => {
+    console.log(item.pubkey.toBase58());
     const deserialized_data = deserialize(
       schema,
       Task,
