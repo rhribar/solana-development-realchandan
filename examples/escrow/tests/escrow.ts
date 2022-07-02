@@ -27,10 +27,10 @@ describe("escrow", () => {
 
   const escrow_account = anchor.web3.Keypair.fromSecretKey(
     Uint8Array.from([
-      160, 185, 213, 93, 206, 186, 79, 128, 107, 218, 55, 101, 154, 78, 254, 37,
-      6, 146, 116, 222, 202, 167, 103, 122, 155, 17, 138, 171, 59, 142, 153, 91,
-      74, 191, 44, 0, 139, 88, 254, 177, 34, 75, 49, 52, 214, 95, 116, 1, 101,
-      87, 72, 201, 68, 71, 15, 140, 28, 173, 239, 252, 101, 210, 167, 170
+      37, 171, 117, 64, 240, 87, 193, 71, 196, 107, 14, 217, 246, 48, 23, 147,
+      134, 188, 153, 39, 100, 207, 250, 3, 5, 200, 102, 249, 106, 225, 71, 8,
+      31, 153, 163, 98, 4, 44, 178, 175, 117, 179, 105, 235, 168, 95, 237, 86,
+      195, 25, 90, 88, 163, 35, 225, 94, 234, 221, 44, 91, 75, 61, 216, 92
     ])
   );
 
@@ -71,112 +71,112 @@ describe("escrow", () => {
     ])
   );
 
-  it("request airdrops", async () => {
-    await connection.requestAirdrop(user1.publicKey, 10 * 1e9);
-    await connection.requestAirdrop(user2.publicKey, 10 * 1e9);
-  });
+  // it("request airdrops", async () => {
+  //   await connection.requestAirdrop(user1.publicKey, 10 * 1e9);
+  //   await connection.requestAirdrop(user2.publicKey, 10 * 1e9);
+  // });
 
-  it("mint the tokens", async () => {
-    const mint_pk1 = await createMint(
-      connection,
-      payer,
-      payer.publicKey,
-      payer.publicKey,
-      0,
-      token1_mint
-    );
-    console.log(`Mint - ${mint_pk1}`);
-    //
-    const mint_pk2 = await createMint(
-      connection,
-      payer,
-      payer.publicKey,
-      payer.publicKey,
-      0,
-      token2_mint
-    );
-    console.log(`Mint - ${mint_pk2}`);
-  });
+  // it("mint the tokens", async () => {
+  //   const mint_pk1 = await createMint(
+  //     connection,
+  //     payer,
+  //     payer.publicKey,
+  //     payer.publicKey,
+  //     0,
+  //     token1_mint
+  //   );
+  //   console.log(`Mint - ${mint_pk1}`);
+  //   //
+  //   const mint_pk2 = await createMint(
+  //     connection,
+  //     payer,
+  //     payer.publicKey,
+  //     payer.publicKey,
+  //     0,
+  //     token2_mint
+  //   );
+  //   console.log(`Mint - ${mint_pk2}`);
+  // });
 
-  it("create token accounts", async () => {
-    const token_user1_t1_pk = await createAccount(
-      connection,
-      payer,
-      token1_mint.publicKey,
-      user1.publicKey
-    );
-    console.log(
-      `Newly created ata for user1 - ${token_user1_t1_pk} for mint - ${token1_mint.publicKey}`
-    );
-    //
-    const token_user1_t2_pk = await createAccount(
-      connection,
-      payer,
-      token2_mint.publicKey,
-      user1.publicKey
-    );
-    console.log(
-      `Newly created ata for user1 - ${token_user1_t2_pk} for mint - ${token2_mint.publicKey}`
-    );
-    //
-    const token_user2_t1_pk = await createAccount(
-      connection,
-      payer,
-      token1_mint.publicKey,
-      user2.publicKey
-    );
-    console.log(
-      `Newly created ata for user2 - ${token_user2_t1_pk} for mint - ${token1_mint.publicKey}`
-    );
-    //
-    const token_user2_t2_pk = await createAccount(
-      connection,
-      payer,
-      token2_mint.publicKey,
-      user2.publicKey
-    );
-    console.log(
-      `Newly created ata for user2 - ${token_user2_t2_pk} for mint - ${token2_mint.publicKey}`
-    );
-  });
+  // it("create token accounts", async () => {
+  //   const token_user1_t1_pk = await createAccount(
+  //     connection,
+  //     payer,
+  //     token1_mint.publicKey,
+  //     user1.publicKey
+  //   );
+  //   console.log(
+  //     `Newly created ata for user1 - ${token_user1_t1_pk} for mint - ${token1_mint.publicKey}`
+  //   );
+  //   //
+  //   const token_user1_t2_pk = await createAccount(
+  //     connection,
+  //     payer,
+  //     token2_mint.publicKey,
+  //     user1.publicKey
+  //   );
+  //   console.log(
+  //     `Newly created ata for user1 - ${token_user1_t2_pk} for mint - ${token2_mint.publicKey}`
+  //   );
+  //   //
+  //   const token_user2_t1_pk = await createAccount(
+  //     connection,
+  //     payer,
+  //     token1_mint.publicKey,
+  //     user2.publicKey
+  //   );
+  //   console.log(
+  //     `Newly created ata for user2 - ${token_user2_t1_pk} for mint - ${token1_mint.publicKey}`
+  //   );
+  //   //
+  //   const token_user2_t2_pk = await createAccount(
+  //     connection,
+  //     payer,
+  //     token2_mint.publicKey,
+  //     user2.publicKey
+  //   );
+  //   console.log(
+  //     `Newly created ata for user2 - ${token_user2_t2_pk} for mint - ${token2_mint.publicKey}`
+  //   );
+  // });
 
-  it("mint tokens", async () => {
-    const amount = 1;
-    //
-    const ata_user1_t1_pk = await getAssociatedTokenAddress(
-      token1_mint.publicKey,
-      user1.publicKey
-    );
-    const tx1 = await mintTo(
-      connection,
-      payer,
-      token1_mint.publicKey,
-      ata_user1_t1_pk,
-      payer,
-      amount
-    );
-    console.log(
-      `MintTo - ${amount} tokens of mint - ${token1_mint.publicKey} were minted to - ${ata_user1_t1_pk}\ntx hash - ${tx1}`
-    );
-    //
-    const ata_user2_t2_pk = await getAssociatedTokenAddress(
-      token2_mint.publicKey,
-      user2.publicKey
-    );
-    const tx2 = await mintTo(
-      connection,
-      payer,
-      token2_mint.publicKey,
-      ata_user2_t2_pk,
-      payer,
-      amount
-    );
-    console.log(
-      `MintTo - ${amount} tokens of mint - ${token2_mint.publicKey} were minted to - ${ata_user2_t2_pk}\ntx hash - ${tx2}`
-    );
-  });
+  // it("mint tokens", async () => {
+  //   const amount = 1;
+  //   //
+  //   const ata_user1_t1_pk = await getAssociatedTokenAddress(
+  //     token1_mint.publicKey,
+  //     user1.publicKey
+  //   );
+  //   const tx1 = await mintTo(
+  //     connection,
+  //     payer,
+  //     token1_mint.publicKey,
+  //     ata_user1_t1_pk,
+  //     payer,
+  //     amount
+  //   );
+  //   console.log(
+  //     `MintTo - ${amount} tokens of mint - ${token1_mint.publicKey} were minted to - ${ata_user1_t1_pk}\ntx hash - ${tx1}`
+  //   );
+  //   //
+  //   const ata_user2_t2_pk = await getAssociatedTokenAddress(
+  //     token2_mint.publicKey,
+  //     user2.publicKey
+  //   );
+  //   const tx2 = await mintTo(
+  //     connection,
+  //     payer,
+  //     token2_mint.publicKey,
+  //     ata_user2_t2_pk,
+  //     payer,
+  //     amount
+  //   );
+  //   console.log(
+  //     `MintTo - ${amount} tokens of mint - ${token2_mint.publicKey} were minted to - ${ata_user2_t2_pk}\ntx hash - ${tx2}`
+  //   );
+  // });
 
-  it("create new poll", async () => {
+  it("create new escrow", async () => {
     try {
       const user1_token1 = await getAssociatedTokenAddress(
         token1_mint.publicKey,
@@ -250,54 +250,54 @@ describe("escrow", () => {
   //   }
   // });
 
-  it("exchange", async () => {
-    try {
-      const [vault_owner, bump] = PublicKey.findProgramAddressSync(
-        [Uint8Array.from(get_seeds("vault_owner"))],
-        program.programId
-      );
-      const user1_token1 = await getAssociatedTokenAddress(
-        token1_mint.publicKey,
-        user1.publicKey
-      );
-      const user1_token2 = await getAssociatedTokenAddress(
-        token2_mint.publicKey,
-        user1.publicKey
-      );
-      const user2_token1 = await getAssociatedTokenAddress(
-        token1_mint.publicKey,
-        user2.publicKey
-      );
-      const user2_token2 = await getAssociatedTokenAddress(
-        token2_mint.publicKey,
-        user2.publicKey
-      );
-      const tx = await program.methods
-        .exchange(bump)
-        .accounts({
-          payer: user2.publicKey,
-          escrowAccount: escrow_account.publicKey,
-          user1Token1: user1_token1,
-          user1Token2: user1_token2,
-          user2Token1: user2_token1,
-          user2Token2: user2_token2,
-          token1Vault: PublicKey.findProgramAddressSync(
-            [
-              Uint8Array.from(get_seeds("token1_vault")),
-              user1.publicKey.toBytes(),
-              token1_mint.publicKey.toBytes()
-            ],
-            program.programId
-          )[0],
-          vaultOwner: vault_owner
-        })
-        .signers([user2])
-        .rpc();
-      console.log("Your transaction signature", tx);
-    } catch (e) {
-      console.log(e);
-    }
-  });
+  // it("exchange", async () => {
+  //   try {
+  //     const [vault_owner, bump] = PublicKey.findProgramAddressSync(
+  //       [Uint8Array.from(get_seeds("vault_owner"))],
+  //       program.programId
+  //     );
+  //     const user1_token1 = await getAssociatedTokenAddress(
+  //       token1_mint.publicKey,
+  //       user1.publicKey
+  //     );
+  //     const user1_token2 = await getAssociatedTokenAddress(
+  //       token2_mint.publicKey,
+  //       user1.publicKey
+  //     );
+  //     const user2_token1 = await getAssociatedTokenAddress(
+  //       token1_mint.publicKey,
+  //       user2.publicKey
+  //     );
+  //     const user2_token2 = await getAssociatedTokenAddress(
+  //       token2_mint.publicKey,
+  //       user2.publicKey
+  //     );
+  //     const tx = await program.methods
+  //       .exchange(bump)
+  //       .accounts({
+  //         payer: user2.publicKey,
+  //         escrowAccount: escrow_account.publicKey,
+  //         user1Token1: user1_token1,
+  //         user1Token2: user1_token2,
+  //         user2Token1: user2_token1,
+  //         user2Token2: user2_token2,
+  //         token1Vault: PublicKey.findProgramAddressSync(
+  //           [
+  //             Uint8Array.from(get_seeds("token1_vault")),
+  //             user1.publicKey.toBytes(),
+  //             token1_mint.publicKey.toBytes()
+  //           ],
+  //           program.programId
+  //         )[0],
+  //         vaultOwner: vault_owner
+  //       })
+  //       .signers([user2])
+  //       .rpc();
+  //     console.log("Your transaction signature", tx);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // });
 });
 
 function get_seeds(seed_str: any) {

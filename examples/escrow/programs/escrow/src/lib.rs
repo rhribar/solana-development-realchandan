@@ -65,7 +65,7 @@ pub mod escrow {
                     ctx.accounts.vault_owner.to_account_info(),
                 )
                 .with_signer(signer_seeds),
-            escrow_account.token2_amount,
+            escrow_account.token1_amount,
         )?;
         // close vault account
         close_account(ctx.accounts.close_vault_account().with_signer(signer_seeds))?;
