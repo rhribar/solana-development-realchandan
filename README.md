@@ -1,6 +1,6 @@
 # Must Read
 
-🏆 [ok so what the fuck is the deal with solana anyway](https://2501babe.github.io/posts/solana101.html)
+🏆 [Solana 101](https://2501babe.github.io/posts/solana101.html)
 
 🏆 [Intro to Programming on Solana](https://book.anchor-lang.com/prerequisites/intro_to_solana.html)
 
